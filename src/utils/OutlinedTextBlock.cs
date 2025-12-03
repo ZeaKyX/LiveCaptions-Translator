@@ -6,7 +6,7 @@ using System.Windows.Documents;
 using System.Windows.Markup;
 using System.Windows.Media;
 
-namespace LiveCaptionsTranslator
+namespace LiveCaptionsTranslator.utils
 {
     [ContentProperty("Text")]
     public class OutlinedTextBlock : FrameworkElement
@@ -193,7 +193,7 @@ namespace LiveCaptionsTranslator
 
             // update the formatted text with the final size
             this.formattedText.MaxTextWidth = finalSize.Width;
-            this.formattedText.MaxTextHeight = finalSize.Height;
+            this.formattedText.MaxTextHeight = Math.Max(0.0001d, finalSize.Height);
 
             // need to re-generate the geometry now that the dimensions have changed
             this.textGeometry = null;
