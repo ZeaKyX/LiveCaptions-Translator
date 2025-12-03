@@ -61,7 +61,7 @@
                         x:Name="OriginalCaption"
                         FontSize="15"
                         Fill="#FFFFFFFF"
-                        StrokeThickness="5"
+                        StrokeThickness="1"
                         Style="{StaticResource CaptionBlockStyle}"
                         Text="{Binding OverlayOriginalCaption, UpdateSourceTrigger=PropertyChanged}">
                         <local:OutlinedTextBlock.Effect>
@@ -86,7 +86,7 @@
                         x:Name="TranslatedCaption"
                         FontSize="18"
                         Fill="#FFFFFFFF"
-                        StrokeThickness="5"
+                        StrokeThickness="1"
                         Style="{StaticResource CaptionBlockStyle}"
                         Text="{Binding OverlayTranslatedCaption, UpdateSourceTrigger=PropertyChanged}">
                         <local:OutlinedTextBlock.Effect>
