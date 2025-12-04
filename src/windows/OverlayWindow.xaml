@@ -61,13 +61,13 @@
                         x:Name="OriginalCaption"
                         FontSize="15"
                         Fill="#FFFFFFFF"
-                        StrokeThickness="1"
+                        StrokeThickness="3"
                         Style="{StaticResource CaptionBlockStyle}"
                         Text="{Binding OverlayOriginalCaption, UpdateSourceTrigger=PropertyChanged}">
                         <local:OutlinedTextBlock.Effect>
                             <DropShadowEffect
                                 x:Name="OriginalCaptionShadow"
-                                BlurRadius="5"
+                                BlurRadius="3"
                                 Direction="0"
                                 ShadowDepth="0"
                                 Color="Black" />
@@ -86,13 +86,13 @@
                         x:Name="TranslatedCaption"
                         FontSize="18"
                         Fill="#FFFFFFFF"
-                        StrokeThickness="1"
+                        StrokeThickness="3"
                         Style="{StaticResource CaptionBlockStyle}"
                         Text="{Binding OverlayTranslatedCaption, UpdateSourceTrigger=PropertyChanged}">
                         <local:OutlinedTextBlock.Effect>
                             <DropShadowEffect
                                 x:Name="TranslatedCaptionShadow"
-                                BlurRadius="5"
+                                BlurRadius="3"
                                 Direction="0"
                                 ShadowDepth="0"
                                 Color="Black" />
