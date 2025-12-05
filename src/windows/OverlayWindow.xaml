@@ -67,7 +67,7 @@
                         <local:OutlinedTextBlock.Effect>
                             <DropShadowEffect
                                 x:Name="OriginalCaptionShadow"
-                                BlurRadius="3"
+                                BlurRadius="5"
                                 Direction="0"
                                 ShadowDepth="0"
                                 Color="Black" />
@@ -92,7 +92,7 @@
                         <local:OutlinedTextBlock.Effect>
                             <DropShadowEffect
                                 x:Name="TranslatedCaptionShadow"
-                                BlurRadius="3"
+                                BlurRadius="5"
                                 Direction="0"
                                 ShadowDepth="0"
                                 Color="Black" />
