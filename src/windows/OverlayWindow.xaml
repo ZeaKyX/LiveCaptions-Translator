@@ -61,7 +61,7 @@
                         x:Name="OriginalCaption"
                         FontSize="15"
                         Fill="#FFFFFFFF"
-                        StrokeThickness="3"
+                        StrokeThickness="0"
                         Style="{StaticResource CaptionBlockStyle}"
                         Text="{Binding OverlayOriginalCaption, UpdateSourceTrigger=PropertyChanged}">
                         <local:OutlinedTextBlock.Effect>
@@ -86,7 +86,7 @@
                         x:Name="TranslatedCaption"
                         FontSize="18"
                         Fill="#FFFFFFFF"
-                        StrokeThickness="3"
+                        StrokeThickness="0"
                         Style="{StaticResource CaptionBlockStyle}"
                         Text="{Binding OverlayTranslatedCaption, UpdateSourceTrigger=PropertyChanged}">
                         <local:OutlinedTextBlock.Effect>
@@ -146,6 +146,14 @@
                         Icon="{ui:SymbolIcon squareShadow12,
                                              Filled=False}"
                         ToolTip="Font Shadow" />
+                    <ui:Button
+                        x:Name="FontStroke"
+                        Background="#FFAAAAAA"
+                        Click="FontStroke_Click"
+                        Cursor="Hand"
+                        Icon="{ui:SymbolIcon textEffects20,
+                                             Filled=False}"
+                        ToolTip="Font Stroke" />
                     <ui:Button
                         x:Name="OpacityIncrease"
                         Margin="5,0,0,0"
