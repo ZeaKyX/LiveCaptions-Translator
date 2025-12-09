@@ -26,7 +26,7 @@ namespace LiveCaptionsTranslator
         "Fill",
         typeof(Brush),
         typeof(OutlinedTextBlock),
-        new FrameworkPropertyMetadata(Brushes.Black, FrameworkPropertyMetadataOptions.AffectsRender));
+        new FrameworkPropertyMetadata(Brushes.White, FrameworkPropertyMetadataOptions.AffectsRender));
 
         public static readonly DependencyProperty StrokeProperty = DependencyProperty.Register(
         "Stroke",
@@ -183,6 +183,12 @@ namespace LiveCaptionsTranslator
         }
 
         protected override void OnRender(DrawingContext drawingContext) {
+            if (StrokeThickness <=0 || StrokeThickness == null) {
+                EnsureFormattedText();
+                drawingContext.DrawText(_FormattedText, new Point(0, 0));
+                return;
+            }
+            
             EnsureGeometry();
 
             drawingContext.DrawGeometry(null, _Pen, _TextGeometry);
@@ -249,7 +255,7 @@ namespace LiveCaptionsTranslator
             FlowDirection,
             new Typeface(FontFamily, FontStyle, FontWeight, FontStretch),
             FontSize,
-            Brushes.Black);
+            Brushes.White);
 
             UpdateFormattedText();
         }
@@ -269,6 +275,7 @@ namespace LiveCaptionsTranslator
             _FormattedText.SetFontFamily(FontFamily);
             _FormattedText.SetFontStretch(FontStretch);
             _FormattedText.SetTextDecorations(TextDecorations);
+            _FormattedText.SetForegroundBrush(Fill);
         }
 
         private void EnsureGeometry() {
