@@ -22,11 +22,11 @@ namespace LiveCaptionsTranslator
             InvalidateVisual();
         }
 
-        public static readonly DependencyProperty FillProperty = DependencyProperty.Register(
-        "Fill",
-        typeof(Brush),
-        typeof(OutlinedTextBlock),
-        new FrameworkPropertyMetadata(Brushes.Black, FrameworkPropertyMetadataOptions.AffectsRender));
+        // public static readonly DependencyProperty FillProperty = DependencyProperty.Register(
+        // "Fill",
+        // typeof(Brush),
+        // typeof(OutlinedTextBlock),
+        // new FrameworkPropertyMetadata(Brushes.Black, FrameworkPropertyMetadataOptions.AffectsRender));
 
         public static readonly DependencyProperty StrokeProperty = DependencyProperty.Register(
         "Stroke",
@@ -64,6 +64,10 @@ namespace LiveCaptionsTranslator
         typeof(OutlinedTextBlock),
         new FrameworkPropertyMetadata(OnFormattedTextUpdated));
 
+        public static readonly DependencyProperty ForegroundProperty = TextElement.ForegroundProperty.AddOwner(
+        typeof(OutlinedTextBlock),
+        new FrameworkPropertyMetadata(OnFormattedTextUpdated));
+
         public static readonly DependencyProperty TextProperty = DependencyProperty.Register(
         "Text",
         typeof(string),
@@ -98,11 +102,11 @@ namespace LiveCaptionsTranslator
         private Geometry _TextGeometry;
         private Pen _Pen;
 
-        public Brush Fill
-        {
-            get { return (Brush)GetValue(FillProperty); }
-            set { SetValue(FillProperty, value); }
-        }
+        // public Brush Fill
+        // {
+        //     get { return (Brush)GetValue(FillProperty); }
+        //     set { SetValue(FillProperty, value); }
+        // }
 
         public FontFamily FontFamily
         {
@@ -133,6 +137,12 @@ namespace LiveCaptionsTranslator
         {
             get { return (FontWeight)GetValue(FontWeightProperty); }
             set { SetValue(FontWeightProperty, value); }
+        }
+
+        public Foreground Foreground
+        {
+            get { return (Foreground)GetValue(ForegroundProperty); }
+            set { SetValue(ForegroundProperty, value); }
         }
 
         public Brush Stroke
@@ -186,7 +196,7 @@ namespace LiveCaptionsTranslator
             EnsureGeometry();
 
             drawingContext.DrawGeometry(null, _Pen, _TextGeometry);
-            drawingContext.DrawGeometry(Fill, null, _TextGeometry);
+            drawingContext.DrawGeometry(Foreground, null, _TextGeometry);
         }
 
         protected override Size MeasureOverride(Size availableSize) {
@@ -249,7 +259,7 @@ namespace LiveCaptionsTranslator
             FlowDirection,
             new Typeface(FontFamily, FontStyle, FontWeight, FontStretch),
             FontSize,
-            Brushes.Black);
+            Foreground);
 
             UpdateFormattedText();
         }
@@ -267,6 +277,7 @@ namespace LiveCaptionsTranslator
             _FormattedText.SetFontStyle(FontStyle);
             _FormattedText.SetFontWeight(FontWeight);
             _FormattedText.SetFontFamily(FontFamily);
+            _FormattedText.SetForeground(Foreground);
             _FormattedText.SetFontStretch(FontStretch);
             _FormattedText.SetTextDecorations(TextDecorations);
         }
