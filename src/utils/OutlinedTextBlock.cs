@@ -102,11 +102,11 @@ namespace LiveCaptionsTranslator
         private Geometry _TextGeometry;
         private Pen _Pen;
 
-        // public Brush Fill
-        // {
-        //     get { return (Brush)GetValue(FillProperty); }
-        //     set { SetValue(FillProperty, value); }
-        // }
+        public Brush Foreground
+        {
+            get { return (Brush)GetValue(ForegroundProperty); }
+            set { SetValue(ForegroundProperty, value); }
+        }
 
         public FontFamily FontFamily
         {
@@ -137,12 +137,6 @@ namespace LiveCaptionsTranslator
         {
             get { return (FontWeight)GetValue(FontWeightProperty); }
             set { SetValue(FontWeightProperty, value); }
-        }
-
-        public Foreground Foreground
-        {
-            get { return (Foreground)GetValue(ForegroundProperty); }
-            set { SetValue(ForegroundProperty, value); }
         }
 
         public Brush Stroke
