@@ -271,8 +271,8 @@ namespace LiveCaptionsTranslator
             _FormattedText.SetFontStyle(FontStyle);
             _FormattedText.SetFontWeight(FontWeight);
             _FormattedText.SetFontFamily(FontFamily);
-            _FormattedText.SetForegroundBrush(Foreground);
             _FormattedText.SetFontStretch(FontStretch);
+            _FormattedText.SetForegroundBrush(Foreground);
             _FormattedText.SetTextDecorations(TextDecorations);
         }
 
