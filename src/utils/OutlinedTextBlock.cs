@@ -22,12 +22,6 @@ namespace LiveCaptionsTranslator
             InvalidateVisual();
         }
 
-        public static readonly DependencyProperty FillProperty = DependencyProperty.Register(
-        "Fill",
-        typeof(Brush),
-        typeof(OutlinedTextBlock),
-        new FrameworkPropertyMetadata(Brushes.Black, FrameworkPropertyMetadataOptions.AffectsRender));
-
         public static readonly DependencyProperty StrokeProperty = DependencyProperty.Register(
         "Stroke",
         typeof(Brush),
@@ -61,6 +55,10 @@ namespace LiveCaptionsTranslator
         new FrameworkPropertyMetadata(OnFormattedTextUpdated));
 
         public static readonly DependencyProperty FontWeightProperty = TextElement.FontWeightProperty.AddOwner(
+        typeof(OutlinedTextBlock),
+        new FrameworkPropertyMetadata(OnFormattedTextUpdated));
+
+        public static readonly DependencyProperty ForegroundProperty = TextElement.ForegroundProperty.AddOwner(
         typeof(OutlinedTextBlock),
         new FrameworkPropertyMetadata(OnFormattedTextUpdated));
 
@@ -98,10 +96,10 @@ namespace LiveCaptionsTranslator
         private Geometry _TextGeometry;
         private Pen _Pen;
 
-        public Brush Fill
+        public Brush Foreground
         {
-            get { return (Brush)GetValue(FillProperty); }
-            set { SetValue(FillProperty, value); }
+            get { return (Brush)GetValue(ForegroundProperty); }
+            set { SetValue(ForegroundProperty, value); }
         }
 
         public FontFamily FontFamily
@@ -186,7 +184,7 @@ namespace LiveCaptionsTranslator
             EnsureGeometry();
 
             drawingContext.DrawGeometry(null, _Pen, _TextGeometry);
-            drawingContext.DrawGeometry(Fill, null, _TextGeometry);
+            drawingContext.DrawGeometry(Foreground, null, _TextGeometry);
         }
 
         protected override Size MeasureOverride(Size availableSize) {
@@ -249,7 +247,7 @@ namespace LiveCaptionsTranslator
             FlowDirection,
             new Typeface(FontFamily, FontStyle, FontWeight, FontStretch),
             FontSize,
-            Brushes.Black);
+            Foreground);
 
             UpdateFormattedText();
         }
@@ -268,6 +266,7 @@ namespace LiveCaptionsTranslator
             _FormattedText.SetFontWeight(FontWeight);
             _FormattedText.SetFontFamily(FontFamily);
             _FormattedText.SetFontStretch(FontStretch);
+            _FormattedText.SetForegroundBrush(Foreground);
             _FormattedText.SetTextDecorations(TextDecorations);
         }
 
